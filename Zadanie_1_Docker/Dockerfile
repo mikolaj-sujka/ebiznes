@@ -16,15 +16,17 @@ RUN apt install -y ${PYTHON_VERSION} python3-pip openjdk-8-jdk
 RUN apt-get install -y wget unzip
 RUN curl -s "https://get.sdkman.io" | bash && \
     /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
-    yes | sdk install java ${JAVA_VERSION} && \
-    yes | sdk install kotlin"
+    yes | sdk install java ${JAVA_VERSION}"
 
-ENV KOTLIN_HOME=$HOME/.sdkman/candidates/kotlin/current
-ENV PATH=$PATH:$KOTLIN_HOME/bin
+RUN curl -Lo /tmp/kotlin-compiler.zip "https://github.com/JetBrains/kotlin/releases/download/v$KOTLIN_VERSION/kotlin-compiler-$KOTLIN_VERSION.zip" \
+    && unzip /tmp/kotlin-compiler.zip -d /opt \
+    && rm /tmp/kotlin-compiler.zip
 
 RUN wget https://services.gradle.org/distributions/gradle-8.7-bin.zip -P /tmp && \
     unzip -d /opt/gradle /tmp/gradle-8.7-bin.zip && \
     rm /tmp/gradle-8.7-bin.zip
+
+ENV PATH="${PATH}:/opt/kotlinc/bin"
 ENV GRADLE_HOME=/opt/gradle/gradle-8.7
 ENV PATH=$PATH:$GRADLE_HOME/bin
 
