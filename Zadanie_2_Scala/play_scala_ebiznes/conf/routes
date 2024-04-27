@@ -17,6 +17,7 @@ DELETE  /category   controllers.CategoryController.deleteCategory(id: Long)
 
 # Order CRUD
 GET /order/:id  controllers.OrderController.getOrder(id: Long)
+GET /orders     controllers.OrderController.getOrders()
 POST /order     controllers.OrderController.createOrder(productId: Long)
 PUT /order/:id      controllers.OrderController.addToOrder(id: Long, productId: Long)
 DELETE /order/:id       controllers.OrderController.removeFromOrder(id: Long, productId: Long)

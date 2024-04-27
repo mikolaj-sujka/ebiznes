@@ -54,4 +54,8 @@ class OrderController @Inject()(val controllerComponents: ControllerComponents) 
       case None => NotFound("Order not found")
     }
   }
+
+  def getOrders() : Action[AnyContent] = Action {
+    Ok(Json.toJson(Database.orders))
+  }
 }
