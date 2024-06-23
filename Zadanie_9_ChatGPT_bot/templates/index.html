@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with AI</title>
+</head>
+<body>
+    <h1>Chat with AI</h1>
+    <form id="query-form">
+        <label for="input">Enter your text:</label><br>
+        <textarea id="input" name="input" rows="4" cols="50"></textarea><br>
+        <label for="model_type">Select model:</label><br>
+        <select id="model_type" name="model_type">
+            <option value="gpt">ChatGPT</option>
+        </select><br><br>
+        <input type="submit" value="Send">
+    </form>
+    <h2>Response:</h2>
+    <div id="response"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('#query-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/send_query',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#response').text(response.response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
