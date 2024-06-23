@@ -11,3 +11,6 @@ https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_4_Go
 
 6 - Testy (python - selenium) (na ocenę 3.0)
 https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_6_Testy
+
+9 - Python ChatGPT bot (na ocenę 3.5)
+https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_9_ChatGPT_bot
