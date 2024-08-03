@@ -29,7 +29,7 @@ const Products = ({ addToCart }) => {
       <h1>Products</h1>
       <ul>
         {products.map(product => (
-          <li key={product.id}>
+          <li key={product.ID}> {/* Ensure each product has a unique id */}
             {product.name} - ${product.price}
             <button onClick={() => addToCart(product)}>Add to Cart</button>
           </li>

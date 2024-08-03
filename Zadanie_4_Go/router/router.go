@@ -7,8 +7,10 @@ import (
 )
 
 func New() *echo.Echo {
-    e := echo.New()
+	return echo.New()
+}
 
+func Configure(e *echo.Echo)  {
     // Trasy dla produktów
     e.POST("/products", controllers.CreateProduct)
     e.GET("/products", controllers.GetProducts)
@@ -23,6 +25,4 @@ func New() *echo.Echo {
     // Trasy dla kategorii
     e.POST("/categories", controllers.CreateCategory)
     e.GET("/categories", controllers.GetCategories)
-
-    return e
 }
