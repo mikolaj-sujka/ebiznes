@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Payments from "../src/components/Payment";
 import Cart from "../src/components/Cart";
 import Products from "../src/components/Product";
-import Login from "./components/Login";
+import GoogleLogin from "./components/GoogleLogin";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import { AuthProvider, useAuth } from "./AuthContext";
 
 const AppContent = () => {
   const [cartItems, setCartItems] = useState([]);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, googleLogin, login, logout } = useAuth();
 
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
@@ -21,18 +22,20 @@ const AppContent = () => {
   return (
     <div>
       {isAuthenticated ? (
-        <>
+        <div>
           <button onClick={logout}>Logout</button>
+          <h1>Welcome to Your Dashboard</h1>
           <Products addToCart={addToCart} />
           <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
           <Payments cartItems={cartItems} />
-        </>
+        </div>
       ) : (
-        <>
-          <h2>Login</h2>
-          <Login />
+        <div>
+          <h2>Login, Google login or Register</h2>
+          <GoogleLogin onClick={googleLogin} />
+          <Login onClick={login} />
           <Register />
-        </>
+        </div>
       )}
     </div>
   );

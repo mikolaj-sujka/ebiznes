@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-	// Create a new Echo instance
 	e := echo.New()
 
 	userStore := database.NewUserStore()
@@ -17,12 +16,13 @@ func main() {
 
 	e.POST("/register", userController.RegisterUser)
 	e.GET("/users/:id", userController.GetUser)
-	e.GET("/login/google", userController.GoogleLogin) // Initiates login
-	e.GET("/auth/callback", userController.GoogleCallback) // Handles Google callback
+	e.GET("/login/google", userController.GoogleLogin) 
+	e.GET("/auth/callback", userController.GoogleCallback) 
+	e.POST("/login", userController.LoginUser)
 
 	// Configure CORS middleware
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:3000"}, // Adjust this as needed
+		AllowOrigins: []string{"http://localhost:3000"}, 
 		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
 	}))
 

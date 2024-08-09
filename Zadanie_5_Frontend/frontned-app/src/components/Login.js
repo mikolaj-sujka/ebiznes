@@ -1,14 +1,42 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
 const Login = () => {
-    const handleLogin = () => {
-        // Start the login flow by redirecting to the backend
-        window.location.href = 'http://localhost:8080/login/google'; // Use a GET request for redirection
-      };
-    
-      return (
-        <button onClick={handleLogin}>
-          Login with Google
-        </button>
-      );
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await axios.post('http://localhost:8080/login', { user: { email, password } });
+    alert('Login successful!');
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+      <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 };
 
 export default Login;
