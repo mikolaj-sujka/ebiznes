@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuth(); // Use login from AuthContext
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8080/login', { user: { email, password } });
-    alert('Login successful!');
+    const response = await axios.post('http://localhost:8080/login', { user: { email, password } });
+    if (response.status === 200) {
+      login(); // Update the authentication state
+      alert('Login successful!');
+    }
   };
 
   return (
