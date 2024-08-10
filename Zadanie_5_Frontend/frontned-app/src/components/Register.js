@@ -8,15 +8,25 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8080/register', { user: { email, username, password } });
-    alert('Registration successful!');
+    try {
+      const response = await axios.post('http://localhost:8080/register', {
+        email, username, password 
+      });
+      if (response.status === 201) {
+        alert('Registration successful!');
+      } else {
+        alert('Registration failed: ' + response.data.error);
+      }
+    } catch (error) {
+      alert('Registration failed: ' + error.message);
+    }
   };
 
   return (
     <div>
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
-      <div>
+        <div>
           <label>Email:</label>
           <input
             type="email"
