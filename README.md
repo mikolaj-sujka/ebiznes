@@ -15,5 +15,8 @@ https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_5_Frontend
 6 - Testy (python - selenium) (na ocenę 3.0)
 https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_6_Testy
 
+8 - Oauth2 (na ocenę 4.0)
+https://github.com/mikolaj-sujka/ebiznes/commit/cfafaeed8d0db7246d2cdc62c5913b8df2cfca77
+
 9 - Python ChatGPT bot (na ocenę 3.5)
 https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_9_ChatGPT_bot
