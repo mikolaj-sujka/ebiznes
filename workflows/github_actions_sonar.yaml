@@ -1,0 +1,73 @@
+name: SonarCloud Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud-go:
+    runs-on: ubuntu-latest
+    name: Analyze Go Project
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.16'
+
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar-${{ hashFiles('**/*.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-sonar
+
+    - name: Run SonarCloud analysis for Go
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
+      run: |
+        cd Zadanie_4_Go
+        go get -u ./...
+        sonar-scanner \
+          -Dsonar.projectKey=your_go_project_key \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN_BACKEND }}
+
+  sonarcloud-frontend:
+    runs-on: ubuntu-latest
+    name: Analyze Frontend Project
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Cache Node modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node
+
+    - name: Run SonarCloud analysis for Frontend
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+      run: |
+        cd Zadanie_5_Frontend
+        npm install
+        npx sonar-scanner \
+          -Dsonar.projectKey=your_frontend_project_key \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN_FRONTEND }}
