@@ -34,14 +34,21 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-sonar
 
+    - name: Install SonarScanner
+      run: |
+        curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+        unzip sonar-scanner-cli.zip
+        export PATH="$PATH:$(pwd)/sonar-scanner-4.7.0.2747-linux/bin"
+
     - name: Run SonarCloud analysis for Go
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
+        PATH: ${{ env.PATH }}:$(pwd)/sonar-scanner-4.7.0.2747-linux/bin
       run: |
         cd Zadanie_4_Go
         go mod tidy
         sonar-scanner \
-          -Dsonar.projectKey=your_go_project_key \
+          -Dsonar.projectKey=mikolaj-sujka_ebiznes \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN_BACKEND }}
@@ -52,6 +59,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set up Java 17
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -66,14 +79,21 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node
 
+    - name: Install SonarScanner
+      run: |
+        curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+        unzip sonar-scanner-cli.zip
+        export PATH="$PATH:$(pwd)/sonar-scanner-4.7.0.2747-linux/bin"
+
     - name: Run SonarCloud analysis for Frontend
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+        PATH: ${{ env.PATH }}:$(pwd)/sonar-scanner-4.7.0.2747-linux/bin
       run: |
         cd Zadanie_5_Frontend
         npm install
         npx sonar-scanner \
-          -Dsonar.projectKey=your_frontend_project_key \
+          -Dsonar.projectKey=mikolaj-sujka_ebiznes \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN_FRONTEND }}
