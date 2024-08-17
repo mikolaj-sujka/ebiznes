@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: docker build -t your-frontend-image:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile Zadanie_5_Frontend
+        run: docker build -t your-frontend-image:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile .
 
       - name: Push Docker image
         run: docker push your-docker-repo/your-frontend-image:latest
