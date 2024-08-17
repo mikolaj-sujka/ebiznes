@@ -26,3 +26,7 @@ https://github.com/mikolaj-sujka/ebiznes/commit/cfafaeed8d0db7246d2cdc62c5913b8d
 
 9 - Python ChatGPT bot (na ocenę 3.5)
 https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_9_ChatGPT_bot
+
+10 - Chmura/CI (na ocenę 3.0)
+https://github.com/mikolaj-sujka/ebiznes/tree/main/Zadanie_10_Azure_Deploy
+https://github.com/mikolaj-sujka/ebiznes/tree/main/.github/workflows
