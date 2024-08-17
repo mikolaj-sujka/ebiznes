@@ -20,7 +20,7 @@ jobs:
         working-directory: ./Zadanie_5_Frontend/frontned-app
 
       - name: Build Docker image
-        run: docker build -t msujka-23/deploy_azure_app:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile .
+        run: docker build -t msujka23/deploy_azure_app:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile .
 
       - name: List Docker images
         run: docker images
@@ -35,4 +35,4 @@ jobs:
       - name: Push Docker image
         run: |
           set -x
-          docker push msujka-23/deploy_azure_app:latest
+          docker push msujka23/deploy_azure_app:latest
