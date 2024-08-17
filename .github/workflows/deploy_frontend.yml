@@ -17,7 +17,7 @@ jobs:
 
       - name: Install npm dependencies
         run: npm install
-        working-directory: ./Zadanie_5_Frontend
+        working-directory: ./Zadanie_5_Frontend/frontned-app
 
       - name: Build Docker image
         run: docker build -t your-docker-repo/your-frontend-image:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile .
