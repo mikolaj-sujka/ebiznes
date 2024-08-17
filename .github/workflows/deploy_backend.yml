@@ -1,0 +1,14 @@
+name: Build 
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build -t your-backend-image:latest .
+      - name: Push Docker image
+        run: docker push your-docker-repo/your-backend-image:latest
