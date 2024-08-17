@@ -37,9 +37,9 @@ jobs:
           set -x
           docker push msujka23/deploy_azure_app:latest
 
-          - name: Deploy to Azure Web App
-          uses: azure/webapps-deploy@v2
-          with:
-            app-name: ebines-app-fe
-            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONTEND }}
-            images: msujka23/deploy_azure_app:latest
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ebines-app-fe
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONTEND }}
+          images: msujka23/deploy_azure_app:latest
