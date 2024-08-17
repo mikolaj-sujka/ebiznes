@@ -20,7 +20,7 @@ jobs:
         working-directory: ./Zadanie_5_Frontend/frontned-app
 
       - name: Build Docker image
-        run: docker build -t your-docker-repo/your-frontend-image:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile .
+        run: docker build -t deploy_azure_app/your-frontend-image:latest -f Zadanie_10_Azure_Deploy/frontend_docker.dockerfile .
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -29,4 +29,4 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Docker image
-        run: docker push your-docker-repo/your-frontend-image:latest
+        run: docker push deploy_azure_app/your-frontend-image:latest
