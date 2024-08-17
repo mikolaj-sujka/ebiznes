@@ -1,8 +1,10 @@
 # Stage 1: Build the React app
 FROM node:14 AS build
 WORKDIR /app
+COPY ../Zadanie_5_Frontend/package*.json . 
+RUN npm install  # Install dependencies
 COPY ../Zadanie_5_Frontend .  
-RUN npm install && npm run build
+RUN npm run build  # Build the React app
 
 # Stage 2: Serve the app with Nginx
 FROM nginx:alpine
