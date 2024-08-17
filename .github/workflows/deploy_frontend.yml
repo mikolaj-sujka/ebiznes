@@ -29,4 +29,6 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Docker image
-        run: docker push deploy_azure_app/your-frontend-image:latest
+        run: |
+          set -x
+          docker push msujka-23/deploy_azure_app:latest
