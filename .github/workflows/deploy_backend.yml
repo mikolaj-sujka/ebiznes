@@ -3,12 +3,15 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Build Docker image
-        run: docker build -t your-backend-image:latest .
+        run: docker build -t your-backend-image:latest -f Zadanie_10_Azure_Deploy/backend_docker.dockerfile Zadanie_4_Go
+
       - name: Push Docker image
         run: docker push your-docker-repo/your-backend-image:latest
