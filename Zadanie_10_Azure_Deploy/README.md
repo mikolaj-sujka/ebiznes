@@ -8,6 +8,8 @@
 #### Azure deploy backend
 - url: https://ebiznes-app-be-djc4drg5fuakb4ck.polandcentral-01.azurewebsites.net/
 ![Zrzut ekranu 2024-08-17 184642](https://github.com/user-attachments/assets/bfaf3d8a-fd51-4840-b4b2-4c12f442e904)
+![Zrzut ekranu 2024-08-17 192920](https://github.com/user-attachments/assets/9dfc615b-b633-4d15-a7d5-ced997fd880b)
+
 
 #### Docker hub images
 ![Zrzut ekranu 2024-08-17 190557](https://github.com/user-attachments/assets/e6bc5a5a-df02-4911-b040-4381cfc9e011)
